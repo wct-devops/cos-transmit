@@ -12,10 +12,14 @@
 - 支持实时显示速度等汇总信息
 - 支持随时暂停、继续、删除任务
 - 支持自动跳过相同的文件(根据文件名和文件大小)
-- 支持直接输入路径
-- 支持中英文切换
+- 支持直接输入路径快速查找
+- 支持拖动文件或者文件夹到窗口来上传
+- 支持生成上传或者下载分享链接
+- 支持创建文件夹
+- 支持打开文件浏览器
+- 支持中英文界面自动切换
 
-由于我们使用了mc后端，因此mc的很多传输能力也都是继承过来的，比如既支持minio也支持通用的s3。
+由于使用了mc作为后端，因此mc的很多传输能力也都是继承过来的，比如既支持minio也支持通用的s3。
 
 ## 安装和配置
 1. 下载  
@@ -36,9 +40,10 @@ cos:
 - endpoint: "https://play.minio.io" # 这个是官方的演示地址
   accesskey: Q3AM3UQ867SPQQA43P2F
   secretkey: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
-# lang:  # en_US/zh_CN # 默认会根据操作系统语言自动切换, 可以在这里强制指定
-# trace: # true/false # 用于调试，默认关闭
-# ignore: # true/fase # 是否自动跳过同名同大小的文件传输，默认打开
+#lang:  # en_US/zh_CN # 默认会根据操作系统语言自动切换, 可以在这里强制指定
+#trace: # true/false # 用于调试，默认关闭
+#ignore: # true/fase # 是否自动跳过同名同大小的文件传输，默认打开
+#expiry: # 604800 # 生成分享链接的时，分享的超时时间，以秒为单位，默认值为604800，即7天
 ```
 
 ## 界面使用介绍
@@ -51,7 +56,16 @@ cos:
 ![image](https://user-images.githubusercontent.com/11539396/127419740-662349d4-fd1c-4b6c-93da-3b5c623f4448.png)
 - 当任务执行时可以选择相应的任务，右键弹出相应的菜单进行管理操作  
 ![image](https://user-images.githubusercontent.com/11539396/127420226-60443f89-bc59-4f8d-b586-428d70116f45.png)
-- 可以直接在路径输入框输入具体地址后回车，快速打开相应目录  
+- 可以直接在路径输入框输入具体地址后回车，快速打开相应目录
+- 可以将需要上传的文件，直接拖动到程序窗口中来实现上传 
+
+## 分享链接的说明:
+- 当用户点击生成分享链接后，会自动将信息拷贝到粘贴板中
+- 用户可以对某个文件生成一个下载分享链接，通过这个链接可以无须认证直接下载，格式如:  
+`http://172.16.24.24:7000/public/software/oracle/instantclient-basiclite-linux.x64-21.1.0.0.0.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=zcm-upload%2F20210806%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210806T153846Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1b0a10ae023023eebb94dd299b2d5716fd197226a0070393d35dfca90dc1b2b9`
+- 用户可以为目录或者文件生成上传分享链接，粘贴板自动复制了相应的curl命令，用户可以直接执行这个命令来实现无认证的上传(注意替换一下@<FILE>路径)，格式如:  
+`curl http://172.16.24.24:7000/public/ -F bucket=public -F policy=eyJleHBpcmF0aW9uIjoiMjAyMS0wOC0xM1QxNTozODoxMC42MDlaIiwiY29uZGl0aW9ucyI6W1siZXEiLCIkYnVja2V0IiwicHVibGljIl0sWyJlcSIsIiRrZXkiLCJzb2Z0d2FyZSJdLFsiZXEiLCIkeC1hbXotZGF0ZSIsIjIwMjEwODA2VDE1MzgxMFoiXSxbImVxIiwiJHgtYW16LWFsZ29yaXRobSIsIkFXUzQtSE1BQy1TSEEyNTYiXSxbImVxIiwiJHgtYW16LWNyZWRlbnRpYWwiLCJ6Y20tdXBsb2FkLzIwMjEwODA2L3VzLWVhc3QtMS9zMy9hd3M0X3JlcXVlc3QiXV19 -F x-amz-algorithm=AWS4-HMAC-SHA256 -F x-amz-credential=zcm-upload/20210806/us-east-1/s3/aws4_request -F x-amz-date=20210806T153810Z -F x-amz-signature=cbf2d99ac92e21935a1f6149be1bc60c00bf73f9ca6338c01ee4ab17856cb1c3 -F key=software -F file=@<FILE>`
+
 
 ### 致谢 
 主要使用的开源库  
