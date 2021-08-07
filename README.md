@@ -66,6 +66,9 @@ cos:
 - 用户可以为目录或者文件生成上传分享链接，粘贴板自动复制了相应的curl命令，用户可以直接执行这个命令来实现无认证的上传(注意替换一下@<FILE>路径)，格式如:  
 `curl http://172.16.24.24:7000/public/ -F bucket=public -F policy=eyJleHBpcmF0aW9uIjoiMjAyMS0wOC0xM1QxNTozODoxMC42MDlaIiwiY29uZGl0aW9ucyI6W1siZXEiLCIkYnVja2V0IiwicHVibGljIl0sWyJlcSIsIiRrZXkiLCJzb2Z0d2FyZSJdLFsiZXEiLCIkeC1hbXotZGF0ZSIsIjIwMjEwODA2VDE1MzgxMFoiXSxbImVxIiwiJHgtYW16LWFsZ29yaXRobSIsIkFXUzQtSE1BQy1TSEEyNTYiXSxbImVxIiwiJHgtYW16LWNyZWRlbnRpYWwiLCJ6Y20tdXBsb2FkLzIwMjEwODA2L3VzLWVhc3QtMS9zMy9hd3M0X3JlcXVlc3QiXV19 -F x-amz-algorithm=AWS4-HMAC-SHA256 -F x-amz-credential=zcm-upload/20210806/us-east-1/s3/aws4_request -F x-amz-date=20210806T153810Z -F x-amz-signature=cbf2d99ac92e21935a1f6149be1bc60c00bf73f9ca6338c01ee4ab17856cb1c3 -F key=software -F file=@<FILE>`
 
+## 已知问题
+- 使用everything搜索文件后，直接点击打开，会出现无法通过拖动文件来进行上传的问题，原因未知，怀疑是everything有什么冲突，可以先打开目录，再启动来规避。
+- 目前上传文件时，无法自动探测content-type，目前提了issue到mc，等PutOptions可以引用后再增加支持。
 
 ### 致谢 
 主要使用的开源库  
