@@ -1,0 +1,17 @@
+cos:
+- endpoint: "http://172.16.24.24:7000/public"  # 注意从minio内置页面复制过来的地址会是http://172.16.24.24:7000/minio/public，需要去掉中间的minio后配置到这里
+  accesskey:  # 如果是公开的cos服务，这里留空即可。否则填写分配的ak和sk信息
+  secretkey:  #
+- endpoint: "http://172.16.24.24:7000/public/software"  # 可以为某个常用的cos地址配置一个单独的cos服务，比如这个点击后可以直接打开public这个bucket的software目录
+  accesskey:  # 
+  secretkey:  #
+- endpoint: "http://172.16.24.24:7000"  # 如果拥有相应权限，可以直接配置根路径，访问所有bucket
+  accesskey:  # 
+  secretkey:  #
+- endpoint: "https://play.minio.io" # 这个是官方的演示地址
+  accesskey: Q3AM3UQ867SPQQA43P2F
+  secretkey: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+#lang:  # en_US/zh_CN # 默认会根据操作系统语言自动切换, 可以在这里强制指定
+#trace: # true/false # 用于调试，默认关闭
+#ignore: # true/fase # 是否自动跳过同名同大小的文件传输，默认打开
+#expiry: # 604800 # 生成分享链接的时，分享的超时时间，以秒为单位，默认值为604800，即7天
