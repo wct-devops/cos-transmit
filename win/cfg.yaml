@@ -1,0 +1,39 @@
+cos:
+- endpoint: "http://172.16.24.24:7000"
+  accesskey: zcm-upload
+  secretkey: zcm-upload
+- endpoint: "http://172.16.24.24:7000/public"
+  accesskey:
+  secretkey:
+- endpoint: "http://172.16.24.24:7000/cos-devspace"
+  accesskey: zcm-upload
+  secretkey: zcm-upload
+- endpoint: "https://play.minio.io"
+  accesskey: Q3AM3UQ867SPQQA43P2F
+  secretkey: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+- endpoint: "https://dev.iwhalecloud.com/cos-devspace/"
+  accesskey: zcm-upload
+  secretkey: zcm-upload
+- endpoint: "https://dev.iwhalecloud.com/cos-docs/"
+  accesskey: zcm-upload
+  secretkey: zcm-upload
+- endpoint: "https://cos.iwhalecloud.com/cos-devspace/"
+  accesskey: admin
+  secretkey: admin@123A
+- endpoint: "https://cos.iwhalecloud.com/cos-docs/"
+  accesskey: admin
+  secretkey: admin@123A
+- endpoint: "https://cos.iwhalecloud.com"
+  accesskey: cos_admin
+  secretkey: minio123
+- endpoint: "https://cos.iwhalecloud.com/demo"
+  accesskey: 5IOQVZOGPXLLZNQG7NR3
+  secretkey: KuptmBp9TfBJRHAld85KOcivbuIEYjUe2sap+f3w
+- endpoint: "https://cos.iwhalecloud.com/cos-eavs-x"
+  accesskey: akpjeavs
+  secretkey: VFMQcTsD
+  
+#lang:  #en_US/zh_CN
+#trace: #true/false
+#ignore: #true/fase
+#expiry: #604800
